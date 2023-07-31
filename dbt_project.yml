@@ -57,6 +57,8 @@ models:
 
 on-run-start:
   - '{{ create_udfs() }}'
+  - '{{ log("Target: " ~ target, info=True) }}'
+  - '{{ log("Context: " ~ context, info=True) }}'
 on-run-end: 
   - "{% if target.name == 'PROD' %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
 
